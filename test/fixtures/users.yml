@@ -1,0 +1,4 @@
+nsqa:
+  name: Test
+  email: nsqa@example.com
+  password_digest: <%= User.digest('password') %>
