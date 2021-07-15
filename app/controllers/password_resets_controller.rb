@@ -16,7 +16,6 @@ class PasswordResetsController < ApplicationController
       @user.create_reset_digest
       @user.send_password_reset_email
       flash[:info] = "An email was just sent to you for reseting your password."
-      debugger
       redirect_to root_url
     else
       flash.now[:danger] = "Email is not available"
@@ -40,8 +39,7 @@ class PasswordResetsController < ApplicationController
 
   private
     def get_user
-      # @user = User.find_by(email: params[:email])
-      return false
+      @user = User.find_by(email: params[:email])
     end
 
     def valid_user
