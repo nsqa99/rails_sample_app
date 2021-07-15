@@ -1,0 +1,12 @@
+one:
+  follower: nsqa
+  followed: nsqa2
+two:
+  follower: nsqa
+  followed: malory
+three:
+  follower: user_1
+  followed: nsqa
+four:
+  follower: user_2
+  followed: nsqa
