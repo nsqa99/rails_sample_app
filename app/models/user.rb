@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :microposts, dependent: :destroy
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email
   before_create :create_activation_digest
@@ -57,8 +58,13 @@ class User < ApplicationRecord
     UserMailer.password_reset(self).deliver_now
   end
 
+  # return false password reset sent earlier than 2 hours ago
   def password_reset_expired?
     reset_at < 2.hours.ago
+  end
+  # get posts on news feed
+  def feed
+    Micropost.where("user_id = ?", id)
   end
   
   private
